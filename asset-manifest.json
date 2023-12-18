@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/moving-site/static/css/main.f728e42d.css",
+    "main.js": "/moving-site/static/js/main.6816f404.js",
+    "index.html": "/moving-site/index.html",
+    "main.f728e42d.css.map": "/moving-site/static/css/main.f728e42d.css.map",
+    "main.6816f404.js.map": "/moving-site/static/js/main.6816f404.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f728e42d.css",
+    "static/js/main.6816f404.js"
+  ]
+}
