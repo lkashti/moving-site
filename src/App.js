@@ -3,7 +3,7 @@ import NavBar from './components/NavBar';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Welcome from './pages/Welcome';
 import ServicePick from './pages/ServicePick';
-import LoadingAddress from './pages/LoadingAddress';
+import TransportationOrder from './pages/TransportationOrder';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
             <Routes>
               <Route path="/moving-site" index element={<Welcome />} />
               <Route path="/service-pick" element={<ServicePick />} />
-              <Route path="/loading-address" element={<LoadingAddress />} />
+              <Route path="/transportation-order" element={<TransportationOrder />} />
             </Routes>
           </BrowserRouter>
         </div>

@@ -17,7 +17,7 @@ const NavBar = () => {
                     <span className='pt-1 text-indigo-500 mr-1'>
                         <ion-icon name="business-outline"></ion-icon>
                     </span>
-                    <Link to='/'>Moving</Link>
+                    <Link to='/moving-site'>Moving</Link>
                 </div>
                 <div onClick={() => setOpen(!open)} className='text-3xl absolute right-8 top-4 cursor-pointer md:hidden '>
                     <ion-icon name={open ? 'close' : 'menu-outline'}></ion-icon>
