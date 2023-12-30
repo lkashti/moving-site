@@ -3,20 +3,21 @@ import React, { useEffect, useState } from 'react'
 const FormProgress = (props) => {
     // const [step, setStep] = useState(0)
     const [steps, setSteps] = useState([
-        { id: 1, type: "From", current: false },
-        { id: 2, type: "To", current: false },
-        { id: 3, type: "Item List", current: false }
+        { type: "From", current: false },
+        { type: "To", current: false },
+        { type: "Item List", current: false }
     ])
     useEffect(() => {
-        setSteps(steps.map(({ id, type, current }) => (
-            id == props.step + 1 ? { id, type, current: true } : { id, type, current: false }
+        setSteps(steps.map(({ type, _ }, index) => (
+            index <= props.step ? { type, current: true } : { type, current: false }
         )));
         console.log(steps);
     }, [props.step]);
 
     return (
-        <ul className='flex flex-nowrap'>
-            {steps.map(({ id, type, current }) => <li className={`border h-full w-full text-center justify-center p-2 ${current ? 'bg-green-400' : 'bg-gray-400'} `} key={id}>{type}</li>)}
+        <ul className='flex flex-nowrap rounded gap-2'>
+            {steps.map(({ type, current }, index) =>
+                <li className={`h-full w-full text-center font-bold opacity-80 text-md justify-center p-2 ${current ? 'bg-green-400' : 'bg-slate-200'} ${index == 0 && 'rounded-s-lg'} ${index == steps.length - 1 && 'rounded-e-lg'}`} key={index}>{type}</li>)}
 
         </ul>
     )

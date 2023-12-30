@@ -7,9 +7,8 @@ import TransportationOrder from './pages/TransportationOrder';
 
 function App() {
   return (
-    <div>
-      <div className='bg-slate-200 w-full h-screen'>
-        <div className='flex items-center justify-center'>
+      <div className='bg-gradient-to-br from-indigo-300 from-30% to-slate-300 w-full h-screen'>
+        <div className='flex flex-col items-center md:h-full '>
           <BrowserRouter>
             <NavBar />
             <Routes>
@@ -20,7 +19,6 @@ function App() {
           </BrowserRouter>
         </div>
       </div>
-    </div>
   );
 }
 

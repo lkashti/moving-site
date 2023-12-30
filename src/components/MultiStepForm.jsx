@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import AddressForm from './AddressForm';
 import Button from './Button';
 import FormProgress from './FormProgress';
+import ItemTable from './ItemTable';
 
 const MultiStepForm = () => {
     const [step, setStep] = useState(0)
@@ -27,26 +28,32 @@ const MultiStepForm = () => {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                {step == 0 && (
-                    <AddressForm></AddressForm>
+        <>
+            <form className='flex flex-col justify-between' onSubmit={handleSubmit}>
+                {step === 0 && (
+                    <AddressForm heading="Where should we pick up your items from?" subheading=""></AddressForm>
+                )}
+                {step === 1 && (
+                    <AddressForm heading="Where should we unload your items at?" subheading=""></AddressForm>
+                )}
+                {step === 2 && (
+                    <ItemTable></ItemTable>
                 )}
                 <br />
-                <div className='flex gap-x-2'>
+                <div className='flex justify-end'>
                     {step > 0 && (
-                        <Button onClick={handlePrevious}>Previous</Button>
+                        <Button className='block mr-auto' onClick={handlePrevious}>Previous</Button>
                     )}
                     {step < 2 ? (
                         <Button onClick={handleNext}>Next</Button>
                     ) : (
-                        <Button type='submit'>Submit</Button>
+                        <input className='bg-green-500 text-white rounded py-2 px-6 font-[Poppins] hover:bg-green-400 duration-200' type='submit' value='Submit'/>
                     )}
                 </div>
                 <br />
                 <FormProgress step={step}></FormProgress>
             </form>
-        </div>
+        </>
     )
 }
 

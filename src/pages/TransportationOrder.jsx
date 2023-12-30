@@ -8,6 +8,6 @@ const TransportationOrder = () => {
             <MultiStepForm />
         </CardContainer>
     )
-}
+};
 
 export default TransportationOrder

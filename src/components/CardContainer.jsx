@@ -2,7 +2,7 @@ import React from 'react'
 
 const CardContainer = (props) => {
   return (
-    <div className='flex flex-col justify-evenly mt-20 px-6 py-8 shadow-md rounded-md h-full bg-slate-100 w-full max-w-[22rem]'>
+    <div className='flex flex-col justify-center h-screen w-5/6 md:max-w-3xl'>
         {props.children}
     </div>
   )
