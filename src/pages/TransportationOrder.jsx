@@ -7,7 +7,6 @@ const TransportationOrder = () => {
         <CardContainer>
             <MultiStepForm />
         </CardContainer>
-
     )
 }
 
