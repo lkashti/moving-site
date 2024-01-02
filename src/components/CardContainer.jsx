@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const CardContainer = (props) => {
   return (
-    <div className='flex flex-col justify-center h-screen w-5/6 md:max-w-3xl'>
-        {props.children}
+    <div className="flex h-screen w-5/6 flex-col justify-center md:max-w-3xl">
+      {props.children}
     </div>
-  )
-}
+  );
+};
 
-export default CardContainer
+export default CardContainer;

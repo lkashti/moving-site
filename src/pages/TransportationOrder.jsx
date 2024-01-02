@@ -1,13 +1,13 @@
-import React from 'react'
-import MultiStepForm from '../components/MultiStepForm'
-import CardContainer from '../components/CardContainer'
+import React from "react";
+import MultiStepForm from "../components/MultiStepForm";
+import CardContainer from "../components/CardContainer";
 
 const TransportationOrder = () => {
-    return (
-        <CardContainer>
-            <MultiStepForm />
-        </CardContainer>
-    )
+  return (
+    <CardContainer>
+      <MultiStepForm />
+    </CardContainer>
+  );
 };
 
-export default TransportationOrder
+export default TransportationOrder;
