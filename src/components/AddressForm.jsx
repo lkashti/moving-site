@@ -2,7 +2,7 @@ import React from "react";
 
 const AddressForm = (props) => {
   const inputClass =
-    "border-blue-400 border rounded w-full py-2 px-3 shadow appearance-none leading-tight focus:outline-none focus:shadow-outline";
+    "border-blue-400 bg-slate-200 border rounded w-full py-2 px-3 shadow appearance-none leading-tight focus:outline-none focus:shadow-outline";
   return (
     <>
       <div className="mb-2 text-center font-[Poppins] text-2xl font-bold text-gray-700">

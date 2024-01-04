@@ -28,7 +28,7 @@ const MultiStepForm = () => {
 
   return (
     <>
-      <form className="flex flex-col justify-between" onSubmit={handleSubmit}>
+      <form className="flex flex-col" onSubmit={handleSubmit}>
         {step === 0 && (
           <AddressForm
             heading="Where should we pick up your items from?"

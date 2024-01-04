@@ -1,12 +1,12 @@
 import React from "react";
 import MultiStepForm from "../components/MultiStepForm";
-import CardContainer from "../components/CardContainer";
+import Container from "../components/Container";
 
 const TransportationOrder = () => {
   return (
-    <CardContainer>
+    <Container>
       <MultiStepForm />
-    </CardContainer>
+    </Container>
   );
 };
 

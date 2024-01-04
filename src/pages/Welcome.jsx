@@ -1,21 +1,21 @@
 import React from "react";
-import CardContainer from "../components/CardContainer";
+import Container from "../components/Container";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 
 const Welcome = () => {
   return (
-    <CardContainer>
-      <div className="mb-10 text-center font-[Poppins] text-2xl font-bold text-gray-700">
-        Welcome!
+    <Container>
+      <h1 className="mb-10 text-center font-[Poppins] text-5xl font-bold text-gray-700">
+        Welcome to Moving!
+      </h1>
+      <div className="flex justify-center gap-12">
+        <Link to="/service-pick">
+          <Button>New User</Button>
+        </Link>
+        <Button>Existing User</Button>
       </div>
-      <div className="flex justify-evenly">
-        <Button>
-          <Link to="/service-pick">New</Link>{" "}
-        </Button>
-        <Button>Existing </Button>
-      </div>
-    </CardContainer>
+    </Container>
   );
 };
 
