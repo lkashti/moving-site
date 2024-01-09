@@ -15,7 +15,6 @@ const FormProgress = (props) => {
           : { type, current: false },
       ),
     );
-    console.log(steps);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.step]);
 

@@ -28,8 +28,8 @@ const NavBar = () => {
           <ion-icon name={open ? "close" : "menu-outline"}></ion-icon>
         </div>
         <ul
-          className={`w-fullpl-7 absolute left-0 -z-10 h-full transition-all duration-200 ease-linear md:static md:z-auto md:flex md:w-auto md:items-center md:p-0 md:opacity-100 ${
-            open ? "top-12 z-10 opacity-100" : "top-[-490px] opacity-0"
+          className={`w-full pl-7 absolute left-0 -z-10 h-full transition-all duration-200 ease-in md:static md:z-auto md:flex md:w-auto md:items-center md:p-0 md:opacity-100 ${
+            open ? "bg-zinc-200 z-10 opacity-100" : "top-[-50vh] opacity-0"
           }`}
         >
           {links.map((link) => (

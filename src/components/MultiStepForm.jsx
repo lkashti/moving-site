@@ -43,7 +43,7 @@ const MultiStepForm = () => {
         )}
         {step === 2 && <ItemTable></ItemTable>}
         <br />
-        <div className="flex justify-end">
+        <div id="form-controls" className="flex justify-end">
           {step > 0 && (
             <Button className="mr-auto block" onClick={handlePrevious}>
               Previous

@@ -1,10 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ItemTable = () => {
   const TABLE_HEAD = ["Item Name", "Weight", "Width", "Height", "Depth"];
-  const [addingNew, setAddingNew] = useState(false);
   const inputClass =
-    "border-blue-400 bg-slate-200 border rounded w-full py-2 px-3 shadow appearance-none leading-tight focus:outline-none focus:shadow-outline";
+    "rounded w-full py-2 px-3 shadow appearance-none leading-tight focus:outline-none focus:shadow-outline";
+  const [addingNew, setAddingNew] = useState(false);
+  const [formData, setFormData] = useState({
+    item_name: "",
+    weight: 0,
+    width: 0,
+    height: 0,
+    depth: 0,
+  });
   const [itemList, setItemList] = useState([
     {
       item_name: "Sofa",
@@ -78,10 +86,24 @@ const ItemTable = () => {
     },
   ]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // handle form submission
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+    console.log(formData);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    document.querySelector("#form-controls").classList.remove("hidden");
+    setItemList(...itemList, formData);
+    console.log(itemList);
+    setAddingNew(false);
+  };
+
   return (
     <>
       {!addingNew ? (
@@ -131,49 +153,61 @@ const ItemTable = () => {
           </div>
         </>
       ) : (
-        <>
-          <div className="mb-5 text-center font-[Poppins] text-2xl font-bold text-gray-700">
-            Fill in item properties or take a picture:
-          </div>
-          <form onSubmit={handleSubmit}>
-            <div className="flex gap-2">
-              <input
-                placeholder="Item Name"
-                className={inputClass}
-                type="text"
-                id="item_name"
-              />
-              <input
-                placeholder="Weight (Kg)"
-                className={inputClass}
-                type="number"
-                id="weight"
-                min="0"
-              />
-              <input
-                placeholder="Width (cm)"
-                className={inputClass}
-                type="number"
-                id="width"
-                min="0"
-              />
-              <input
-                placeholder="Height (cm)"
-                className={inputClass}
-                type="number"
-                id="height"
-                min="0"
-              />
-              <input
-                placeholder="Depth (cm)"
-                className={inputClass}
-                type="number"
-                id="depth"
-                min="0"
-              />
+        document.querySelector("#form-controls").classList.add("hidden") || (
+          <>
+            <div className="mb-5 text-center font-[Poppins] text-2xl font-bold text-gray-700">
+              Fill in item properties or take a picture:
             </div>
-          </form>
-        </>
+            <form onSubmit={handleSubmit}>
+              <div className="flex gap-2">
+                <input
+                  placeholder="Item Name"
+                  className={inputClass}
+                  onChange={handleInputChange}
+                  name="item_name"
+                  type="text"
+                />
+                <input
+                  placeholder="Weight (Kg)"
+                  className={inputClass}
+                  onChange={handleInputChange}
+                  name="weight"
+                  type="number"
+                  min="0"
+                />
+                <input
+                  placeholder="Width (cm)"
+                  className={inputClass}
+                  onChange={handleInputChange}
+                  name="width"
+                  type="number"
+                  min="0"
+                />
+                <input
+                  placeholder="Height (cm)"
+                  className={inputClass}
+                  onChange={handleInputChange}
+                  name="height"
+                  type="number"
+                  min="0"
+                />
+                <input
+                  placeholder="Depth (cm)"
+                  className={inputClass}
+                  onChange={handleInputChange}
+                  name="depth"
+                  type="number"
+                  min="0"
+                />
+                <input
+                  className="rounded bg-zinc-200 px-6 py-2 font-[Poppins] font-semibold text-blue-500 ring-1 duration-200 hover:bg-blue-300 hover:ring-0 hover:text-slate-200"
+                  type="submit"
+                  value="Add"
+                />
+              </div>
+            </form>
+          </>
+        )
       )}
     </>
   );
