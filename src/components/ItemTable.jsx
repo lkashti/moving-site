@@ -3,6 +3,8 @@ import React, { useState } from "react";
 const ItemTable = () => {
   const TABLE_HEAD = ["Item Name", "Weight", "Width", "Height", "Depth"];
   const [addingNew, setAddingNew] = useState(false);
+  const inputClass =
+    "border-blue-400 bg-slate-200 border rounded w-full py-2 px-3 shadow appearance-none leading-tight focus:outline-none focus:shadow-outline";
   const [itemList, setItemList] = useState([
     {
       item_name: "Sofa",
@@ -76,44 +78,103 @@ const ItemTable = () => {
     },
   ]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // handle form submission
+  };
   return (
     <>
-      <div className="mb-5 text-center font-[Poppins] text-2xl font-bold text-gray-700">
-        What are we delivering?
-      </div>
-      <div className=" no-scrollbar max-h-96 w-full overflow-auto rounded-lg shadow-md">
-        <table className="w-full table-auto bg-gray-100 bg-opacity-30 text-left">
-          <thead className="z-auto">
-            {TABLE_HEAD.map((head) => (
-              <th
-                key={head}
-                className="border-b border-blue-400 bg-blue-100 px-2 py-4"
-              >
-                <span className="font-semibold leading-none text-indigo-600 opacity-70">
-                  {head}
-                </span>
-              </th>
-            ))}
-          </thead>
-          <tbody>
-            {itemList.map(
-              ({ item_name, weight, width, height, depth }, index) => {
-                const isLast = index === itemList.length - 1;
-                const classes = isLast ? "p-4" : "p-4 border-b border-blue-400";
-                return (
-                  <tr key={item_name}>
-                    <td className={classes}>{item_name}</td>
-                    <td className={classes}>{weight}</td>
-                    <td className={classes}>{width}</td>
-                    <td className={classes}>{height}</td>
-                    <td className={classes}>{depth}</td>
-                  </tr>
-                );
-              },
-            )}
-          </tbody>
-        </table>
-      </div>
+      {!addingNew ? (
+        <>
+          <div className="mb-5 text-center font-[Poppins] text-2xl font-bold text-gray-700">
+            What are we delivering?
+          </div>
+          <div className="no-scrollbar max-h-[60vh] overflow-auto rounded-lg shadow-md">
+            <table className="w-full table-auto bg-gray-100 bg-opacity-60 text-left">
+              <thead className="z-auto">
+                {TABLE_HEAD.map((head) => (
+                  <th
+                    key={head}
+                    className="border-b border-blue-400 bg-zinc-300/80 px-2 py-4"
+                  >
+                    <span className="font-bold leading-none text-blue-600 opacity-70">
+                      {head}
+                    </span>
+                  </th>
+                ))}
+              </thead>
+              <tbody>
+                {itemList.map(
+                  ({ item_name, weight, width, height, depth }, index) => {
+                    const classes =
+                      "p-4 border-b font-semibold border-blue-400";
+                    return (
+                      <tr key={item_name}>
+                        <td className={classes}>{item_name}</td>
+                        <td className={classes}>{weight}</td>
+                        <td className={classes}>{width}</td>
+                        <td className={classes}>{height}</td>
+                        <td className={classes}>{depth}</td>
+                      </tr>
+                    );
+                  },
+                )}
+                <tr>
+                  <button onClick={() => setAddingNew(!addingNew)}>
+                    <td className="p-4 font-bold text-blue-600">
+                      + Add new item
+                    </td>
+                  </button>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="mb-5 text-center font-[Poppins] text-2xl font-bold text-gray-700">
+            Fill in item properties or take a picture:
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="flex gap-2">
+              <input
+                placeholder="Item Name"
+                className={inputClass}
+                type="text"
+                id="item_name"
+              />
+              <input
+                placeholder="Weight (Kg)"
+                className={inputClass}
+                type="number"
+                id="weight"
+                min="0"
+              />
+              <input
+                placeholder="Width (cm)"
+                className={inputClass}
+                type="number"
+                id="width"
+                min="0"
+              />
+              <input
+                placeholder="Height (cm)"
+                className={inputClass}
+                type="number"
+                id="height"
+                min="0"
+              />
+              <input
+                placeholder="Depth (cm)"
+                className={inputClass}
+                type="number"
+                id="depth"
+                min="0"
+              />
+            </div>
+          </form>
+        </>
+      )}
     </>
   );
 };

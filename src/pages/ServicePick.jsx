@@ -9,7 +9,7 @@ const ServicePick = () => {
         <div className="mb-10 text-center font-[Poppins] text-2xl font-bold text-gray-700">
           Hello User<br></br>Pick the service you need
         </div>
-        <div className="grid grid-cols-2 grid-rows-2 gap-5">
+        <div className="grid grid-cols-2 grid-rows-2 gap-2 w-fit mx-auto">
           <Button>A Storage Unit</Button>
 
           <Link to="/transportation-order">

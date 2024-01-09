@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 const FormProgress = (props) => {
   // const [step, setStep] = useState(0)
   const [steps, setSteps] = useState([
-    { type: "From", current: false },
-    { type: "To", current: false },
-    { type: "Item List", current: false },
+    { type: "Source Address", current: false },
+    { type: "Target Address", current: false },
+    { type: "Insert your items", current: false },
   ]);
   useEffect(() => {
     setSteps(
@@ -20,13 +20,13 @@ const FormProgress = (props) => {
   }, [props.step]);
 
   return (
-    <ul className="flex flex-nowrap gap-2 rounded">
+    <ul className="mx-auto flex max-w-max flex-nowrap rounded">
       {steps.map(({ type, current }, index) => (
         <li
-          className={`text-md h-full w-full justify-center p-2 text-center font-bold opacity-80 ${
-            current ? "bg-green-400" : "bg-slate-200"
-          } ${index === 0 && "rounded-s-lg"} ${
-            index === steps.length - 1 && "rounded-e-lg"
+          className={`text-xl text-slate-200 py-2 px-3 justify-center text-center  font-[Poppins] opacity-80 shadow ring-1 ring-gray-800 ring-opacity-10 ${
+            current ? "bg-blue-500" : "bg-gray-700"
+          } ${index === 0 && "rounded-s-md"} ${
+            index === steps.length - 1 && "rounded-e-md"
           }`}
           key={index}
         >
