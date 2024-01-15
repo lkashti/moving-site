@@ -13,9 +13,9 @@ const NavBar = () => {
   let [open, setOpen] = useState(false);
 
   return (
-    <nav className="shadow-md py-3 px-4 md:px-[15%]">
+    <nav className="px-4 py-3 shadow-md md:px-[15%]">
       <div className="items-center justify-between md:flex">
-        <div className="flex cursor-pointer items-center font-semibold font-[Poppins] md:text-3xl text-gray-700">
+        <div className="flex cursor-pointer items-center font-[Poppins] font-semibold text-gray-700 md:text-3xl">
           <span className="mt-1 pr-2 text-zinc-500">
             <ion-icon name="business-outline"></ion-icon>
           </span>
@@ -28,8 +28,8 @@ const NavBar = () => {
           <ion-icon name={open ? "close" : "menu-outline"}></ion-icon>
         </div>
         <ul
-          className={`w-full pl-7 absolute left-0 -z-10 h-full transition-all duration-200 ease-in md:static md:z-auto md:flex md:w-auto md:items-center md:p-0 md:opacity-100 ${
-            open ? "bg-zinc-200 z-10 opacity-100" : "top-[-50vh] opacity-0"
+          className={`absolute left-0 -z-10 h-full w-full pl-7 transition-all duration-200 ease-in md:static md:z-auto md:flex md:w-auto md:items-center md:p-0 md:opacity-100 ${
+            open ? "z-10 bg-zinc-200 opacity-100" : "top-[-50vh] opacity-0"
           }`}
         >
           {links.map((link) => (

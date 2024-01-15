@@ -1,12 +1,8 @@
 import React from "react";
 
-const Container = (props) => {
+const Container = ({ className, children }) => {
   return (
-    <div
-      className={` ${props.className ?? ""} md:min-w-[40vw] px-4`}
-    >
-      {props.children}
-    </div>
+    <div className={` ${className ?? ""} px-4 md:min-w-[40vw]`}>{children}</div>
   );
 };
 

@@ -8,7 +8,7 @@ import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div className='bg-zinc-300/60 w-full min-h-screen'>
+    <div className='bg-zinc-400/60 w-full min-h-screen'>
       <BrowserRouter>
         <NavBar />
         <div className='flex flex-col justify-center items-center h-screen'>
@@ -16,7 +16,7 @@ function App() {
             <Route path="/moving-site" index element={<Welcome />} />
             <Route path="/service-pick" element={<ServicePick />} />
             <Route path="/transportation-order" element={<TransportationOrder />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" action={() => document.querySelectorAll("nav").classList.add("hidden")} element={<NotFound />} />
           </Routes>
         </div>
       </BrowserRouter>

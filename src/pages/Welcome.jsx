@@ -18,5 +18,4 @@ const Welcome = () => {
     </Container>
   );
 };
-
 export default Welcome;

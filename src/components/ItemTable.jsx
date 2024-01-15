@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 const ItemTable = () => {
   const TABLE_HEAD = ["Item Name", "Weight", "Width", "Height", "Depth"];
@@ -13,6 +12,7 @@ const ItemTable = () => {
     height: 0,
     depth: 0,
   });
+
   const [itemList, setItemList] = useState([
     {
       item_name: "Sofa",
@@ -86,21 +86,28 @@ const ItemTable = () => {
     },
   ]);
 
+  useEffect(() => {
+    const data = JSON.parse(sessionStorage.getItem("item_list"));
+    data && setItemList(data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleInputChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
+    sessionStorage.setItem(
+      "item_list",
+      JSON.stringify([...itemList, formData]),
+    );
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
-    console.log(formData);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     document.querySelector("#form-controls").classList.remove("hidden");
-    setItemList(...itemList, formData);
-    console.log(itemList);
+    setItemList([...itemList, formData]);
     setAddingNew(false);
   };
 
@@ -131,7 +138,7 @@ const ItemTable = () => {
                     const classes =
                       "p-4 border-b font-semibold border-blue-400";
                     return (
-                      <tr key={item_name}>
+                      <tr key={index}>
                         <td className={classes}>{item_name}</td>
                         <td className={classes}>{weight}</td>
                         <td className={classes}>{width}</td>
@@ -142,11 +149,11 @@ const ItemTable = () => {
                   },
                 )}
                 <tr>
-                  <button onClick={() => setAddingNew(!addingNew)}>
-                    <td className="p-4 font-bold text-blue-600">
+                  <td colSpan="5" className="p-4 font-bold text-blue-600">
+                    <button className="underline-offset-2 md:hover:underline"onClick={() => setAddingNew(!addingNew)}>
                       + Add new item
-                    </td>
-                  </button>
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -158,54 +165,53 @@ const ItemTable = () => {
             <div className="mb-5 text-center font-[Poppins] text-2xl font-bold text-gray-700">
               Fill in item properties or take a picture:
             </div>
-            <form onSubmit={handleSubmit}>
-              <div className="flex gap-2">
-                <input
-                  placeholder="Item Name"
-                  className={inputClass}
-                  onChange={handleInputChange}
-                  name="item_name"
-                  type="text"
-                />
-                <input
-                  placeholder="Weight (Kg)"
-                  className={inputClass}
-                  onChange={handleInputChange}
-                  name="weight"
-                  type="number"
-                  min="0"
-                />
-                <input
-                  placeholder="Width (cm)"
-                  className={inputClass}
-                  onChange={handleInputChange}
-                  name="width"
-                  type="number"
-                  min="0"
-                />
-                <input
-                  placeholder="Height (cm)"
-                  className={inputClass}
-                  onChange={handleInputChange}
-                  name="height"
-                  type="number"
-                  min="0"
-                />
-                <input
-                  placeholder="Depth (cm)"
-                  className={inputClass}
-                  onChange={handleInputChange}
-                  name="depth"
-                  type="number"
-                  min="0"
-                />
-                <input
-                  className="rounded bg-zinc-200 px-6 py-2 font-[Poppins] font-semibold text-blue-500 ring-1 duration-200 hover:bg-blue-300 hover:ring-0 hover:text-slate-200"
-                  type="submit"
-                  value="Add"
-                />
-              </div>
-            </form>
+            <div className="flex md:flex-row flex-col gap-2">
+              <input
+                placeholder="Item Name"
+                className={inputClass}
+                onChange={handleInputChange}
+                name="item_name"
+                type="text"
+              />
+              <input
+                placeholder="Weight (Kg)"
+                className={inputClass}
+                onChange={handleInputChange}
+                name="weight"
+                type="number"
+                min="0"
+              />
+              <input
+                placeholder="Width (cm)"
+                className={inputClass}
+                onChange={handleInputChange}
+                name="width"
+                type="number"
+                min="0"
+              />
+              <input
+                placeholder="Height (cm)"
+                className={inputClass}
+                onChange={handleInputChange}
+                name="height"
+                type="number"
+                min="0"
+              />
+              <input
+                placeholder="Depth (cm)"
+                className={inputClass}
+                onChange={handleInputChange}
+                name="depth"
+                type="number"
+                min="0"
+              />
+              <button
+                onClick={handleSubmit}
+                className="rounded bg-zinc-200 px-6 py-2 font-[Poppins] font-semibold text-blue-500 ring-1 duration-200 hover:bg-blue-300 hover:text-slate-200 hover:ring-0"
+              >
+                Add
+              </button>
+            </div>
           </>
         )
       )}

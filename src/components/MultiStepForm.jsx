@@ -6,7 +6,6 @@ import ItemTable from "./ItemTable";
 
 const MultiStepForm = () => {
   const [step, setStep] = useState(0);
-  const [formData, setFormData] = useState({});
 
   const handleNext = () => {
     setStep(step + 1);
@@ -16,11 +15,6 @@ const MultiStepForm = () => {
     setStep(step - 1);
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     // handle form submission
@@ -28,15 +22,17 @@ const MultiStepForm = () => {
 
   return (
     <>
-      <form className="flex flex-col" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-1" onSubmit={handleSubmit}>
         {step === 0 && (
           <AddressForm
+            form_type="source"
             heading="Where should we pick up your items from?"
             subheading=""
           ></AddressForm>
         )}
         {step === 1 && (
           <AddressForm
+            form_type="target"
             heading="Where should we unload your items at?"
             subheading=""
           ></AddressForm>
